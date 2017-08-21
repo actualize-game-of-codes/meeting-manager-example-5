@@ -2,7 +2,10 @@
 
 <h1><a href="/meetings">All meetings</a></h1>
 <div>
-  Filter meeting name: <input type="text" v-model="nameFilter">
+  Filter meeting name: <input type="text" v-model="nameFilter" list="meeting-names">
+  <datalist id="meeting-names">
+    <option v-for="meeting in meetings">{{ meeting.name }}</option>
+  </datalist>
 </div>
 <div v-for="meeting in meetings" v-if="isValidMeeting(meeting)">
   <h3><a v-bind:href="'/meetings/' + meeting.id">{{ meeting.name }}</a></h3>
