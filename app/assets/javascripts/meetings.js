@@ -23,7 +23,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     },
     computed: {
-
+      modifiedMeetings: function() {
+        return this.meetings.sort(function(a, b) {
+          return a.start_time < b.start_time;
+        });
+      }
     }
   });
 });

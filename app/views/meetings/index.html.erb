@@ -7,7 +7,7 @@
     <option v-for="meeting in meetings">{{ meeting.name }}</option>
   </datalist>
 </div>
-<div v-for="meeting in meetings" v-if="isValidMeeting(meeting)">
+<div v-for="meeting in modifiedMeetings" v-if="isValidMeeting(meeting)">
   <h3><a v-bind:href="'/meetings/' + meeting.id">{{ meeting.name }}</a></h3>
   <p>
     Tags:
