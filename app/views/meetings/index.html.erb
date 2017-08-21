@@ -7,6 +7,7 @@
     <button v-on:click="changeSortAttribute('name')">Sort by name</button>
     <button v-on:click="changeSortAttribute('address')">Sort by address</button>
     <button v-on:click="changeSortAttribute('start_time')">Sort by start time</button>
+    Sort ascending: <input type="checkbox" v-model="sortAscending">
   </div>
   <datalist id="meeting-names">
     <option v-for="meeting in meetings">{{ meeting.name }}</option>

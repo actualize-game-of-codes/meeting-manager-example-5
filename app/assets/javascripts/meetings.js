@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       message: 'Hello Vue!',
       meetings: [],
       nameFilter: "",
-      sortAttribute: "name"
+      sortAttribute: "name",
+      sortAscending: false
     },
     mounted: function() {
       $.ajax({
@@ -29,7 +30,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     computed: {
       modifiedMeetings: function() {
         return this.meetings.sort(function(a, b) {
-          return a[this.sortAttribute] < b[this.sortAttribute];
+          if (this.sortAscending) {
+            return a[this.sortAttribute] > b[this.sortAttribute];
+          } else {
+            return a[this.sortAttribute] < b[this.sortAttribute];
+          }
         }.bind(this));
       }
     }
