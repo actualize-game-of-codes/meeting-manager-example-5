@@ -3,6 +3,11 @@
 <h1><a href="/meetings">All meetings</a></h1>
 <div>
   Filter meeting name: <input type="text" v-model="nameFilter" list="meeting-names">
+  <div>
+    <button v-on:click="changeSortAttribute('name')">Sort by name</button>
+    <button v-on:click="changeSortAttribute('address')">Sort by address</button>
+    <button v-on:click="changeSortAttribute('start_time')">Sort by start time</button>
+  </div>
   <datalist id="meeting-names">
     <option v-for="meeting in meetings">{{ meeting.name }}</option>
   </datalist>

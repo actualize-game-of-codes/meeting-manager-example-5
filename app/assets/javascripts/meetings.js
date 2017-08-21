@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     data: {
       message: 'Hello Vue!',
       meetings: [],
-      nameFilter: ""
+      nameFilter: "",
+      sortAttribute: "name"
     },
     mounted: function() {
       $.ajax({
@@ -20,13 +21,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       isValidMeeting: function(inputMeeting) {
         return inputMeeting.name.toLowerCase().indexOf(this.nameFilter.toLowerCase()) !== -1;
+      },
+      changeSortAttribute: function(inputSortAttribute) {
+        this.sortAttribute = inputSortAttribute;
       }
     },
     computed: {
       modifiedMeetings: function() {
         return this.meetings.sort(function(a, b) {
-          return a.start_time < b.start_time;
-        });
+          return a[this.sortAttribute] < b[this.sortAttribute];
+        }.bind(this));
       }
     }
   });
