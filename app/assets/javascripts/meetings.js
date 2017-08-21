@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el: '#app',
     data: {
       message: 'Hello Vue!',
-      meetings: []
+      meetings: [],
+      nameFilter: ""
     },
     mounted: function() {
       $.ajax({
@@ -17,7 +18,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       });
     },
     methods: {
-
+      isValidMeeting: function(inputMeeting) {
+        return inputMeeting.name.toLowerCase().indexOf(this.nameFilter.toLowerCase()) !== -1;
+      }
     },
     computed: {
 
