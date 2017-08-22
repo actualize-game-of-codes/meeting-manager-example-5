@@ -7,7 +7,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       meetings: [],
       nameFilter: "",
       sortAttribute: "name",
-      sortAscending: false
+      sortAscending: false,
+      newMeetingName: "",
+      newMeetingAddress: "",
+      newMeetingStartTime: "",
+      newMeetingEndTime: "",
+      newMeetingNotes: ""
     },
     mounted: function() {
       $.ajax({
@@ -25,6 +30,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
       },
       changeSortAttribute: function(inputSortAttribute) {
         this.sortAttribute = inputSortAttribute;
+      },
+      createMeeting: function() {
+        $.ajax({
+          url: "/api/v1/meetings",
+          type: "POST",
+          data: `name=${this.newMeetingName}&address=${this.newMeetingAddress}`,
+          success: function(response) {
+            this.meetings.push(response);
+          }.bind(this)
+        });
       }
     },
     computed: {

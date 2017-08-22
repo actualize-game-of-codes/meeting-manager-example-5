@@ -1,5 +1,15 @@
 <div id="app">
-
+<div>
+  <h4>Create a new meeting</h4>
+  <div>
+    Name: <input type="text" v-model="newMeetingName">
+    Address: <input type="text" v-model="newMeetingAddress">
+    Start time: <input type="datetime-local" v-model="newMeetingStartTime">
+    End time: <input type="datetime-local" v-model="newMeetingEndTime">
+    Notes: <input type="text" v-model="newMeetingNotes">
+    <button v-on:click="createMeeting()">Submit</button>
+  </div>
+</div>
 <h1><a href="/meetings">All meetings</a></h1>
 <div>
   Filter meeting name: <input type="text" v-model="nameFilter" list="meeting-names">
